@@ -1,6 +1,4 @@
-import simulation
+import visualization
 
 if __name__ == '__main__':
-    simulation = simulation.Simulation(size = 100)
-    simulation.run_simulation(4)
-
+    visualization.start_game(number_of_ants=4)

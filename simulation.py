@@ -68,15 +68,34 @@ class Simulation:
             else:
                 ant.move()
 
-
-    def run_simulation(self,number_of_ants) -> None:
+    def spawn_ants(self, number_of_ants) -> None:
         for i in range(number_of_ants):
-            self.ants.append(Ant(position=random.randint(1, self.size), direction=random.choice([-1, 1])))
+            self.ants.append(
+                Ant(
+                    position=random.randint(1, self.size),
+                    direction=random.choice([-1, 1])
+                )
+            )
 
-        while self.is_any_ant_alive():
+    def step(self) -> None:
+        if not self.is_any_ant_alive():
+            return
 
-            self.compute_next_position()
-            self.move_ants()
-            self.check_boundaries()
-            self.turn += 1
-            self.print_ants()
+        self.compute_next_position()
+        self.move_ants()
+        self.check_boundaries()
+        self.turn += 1
+
+
+    # def run_simulation(self,number_of_ants) -> None:
+    #     for i in range(number_of_ants):
+    #         self.ants.append(Ant(position=random.randint(1, self.size), direction=random.choice([-1, 1])))
+    #
+    #     while self.is_any_ant_alive():
+    #
+    #         self.compute_next_position()
+    #         self.move_ants()
+    #         self.check_boundaries()
+    #         self.turn += 1
+    #
+    #         self.print_ants()
